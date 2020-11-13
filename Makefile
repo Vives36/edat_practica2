@@ -9,6 +9,8 @@ all : $(EXE)
 clean :
 	rm -f *.o core $(EXE)
 
-$(EXE) : % : %.o odbc.o 
+$(EXE) : % : %.o odbc.o menu_template.o products.o
+
+
 
 
