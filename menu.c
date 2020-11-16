@@ -37,7 +37,7 @@ int main() {
                 break;
 
             case 4: {
-                printf("Bye Bye!");
+                printf("Bye Bye!\n");
                 break;
             } 
         }

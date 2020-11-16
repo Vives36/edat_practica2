@@ -79,7 +79,9 @@ void ShowOrdersMenu(){
                 break;
             
             case 2: {
-                printf("Aqui hace range");
+                if(rangeQuery() == EXIT_SUCCESS){
+                    ShowOrdersMenu();
+                }
             }
                 break;
 
