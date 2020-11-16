@@ -97,8 +97,9 @@ int findQuery(){
     x[strlen(x)-1]='\0';
     
     /* Guardamos en 'query' la consulta */
-    sprintf(query, "select p.productcode, p.productname from products p where p.productname position() order by p.productcode;", x);
+    sprintf(query, "select p.productcode, p.productname from products p where position('%s' IN p.productname) > 0 order by p.productcode;", x);
 	printf("%s\n", query);   /* IMPORTANTISIMO IMPRIMIR CONSULTA */
+    printf("\n");
 
     /* Guarda resultado de la consulta en stmt */
     SQLExecDirect(stmt, (SQLCHAR*) query, SQL_NTS);
