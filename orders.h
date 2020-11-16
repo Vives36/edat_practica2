@@ -5,9 +5,9 @@
 
 
 
-int openQuery();
-int rangeQuery();
-int detailQuery();
+int openOrdersQuery();
+int rangeOrdersQuery();
+int detailOrdersQuery();
 
 
 

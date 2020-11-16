@@ -5,8 +5,8 @@
 
 
 
-int stockQuery();
-int findQuery();
+int stockProductsQuery();
+int findProductsQuery();
 
 
 

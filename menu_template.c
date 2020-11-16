@@ -6,6 +6,7 @@
 #include "menu_template.h"
 #include "products.h"
 #include "orders.h"
+#include "customers.h"
 
 
 void ShowProductsMenu(){
@@ -14,14 +15,14 @@ void ShowProductsMenu(){
         nChoice = ShowProductsSubMenu();
         switch (nChoice){
             case 1: {
-                if(stockQuery() == EXIT_SUCCESS){
+                if(stockProductsQuery() == EXIT_SUCCESS){
                     ShowProductsMenu();
                 }
             }
                 break;
             
             case 2: {
-                if(findQuery() == EXIT_SUCCESS){
+                if(findProductsQuery() == EXIT_SUCCESS){
                     ShowProductsMenu();
                 }
             }
@@ -72,14 +73,14 @@ void ShowOrdersMenu(){
         nChoice = ShowOrdersSubMenu();
         switch (nChoice){
             case 1: {
-                if(openQuery() == EXIT_SUCCESS){
+                if(openOrdersQuery() == EXIT_SUCCESS){
                     ShowOrdersMenu();
                 }
             }
                 break;
             
             case 2: {
-                if(rangeQuery() == EXIT_SUCCESS){
+                if(rangeOrdersQuery() == EXIT_SUCCESS){
                     ShowOrdersMenu();
                 }
             }
@@ -136,7 +137,9 @@ void ShowCustomersMenu(){
         nChoice = ShowCustomersSubMenu();
         switch (nChoice){
             case 1: {
-                printf("Aqui hace Find");
+                if(findCustomersQuery() == EXIT_SUCCESS){
+                    ShowCustomersMenu();
+                }
             }
                 break;
             

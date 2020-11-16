@@ -8,7 +8,7 @@
 #include "orders.h"
 
 
-int openQuery(){
+int openOrdersQuery(){
     SQLHENV env;
     SQLHDBC dbc;
     SQLHSTMT stmt; /* CONTENEDOR */
@@ -54,7 +54,7 @@ int openQuery(){
 }
 
 
-int rangeQuery(){
+int rangeOrdersQuery(){
     SQLHENV env;
     SQLHDBC dbc;
     SQLHSTMT stmt; /* CONTENEDOR */
@@ -119,36 +119,6 @@ int rangeQuery(){
         printf("%d\t\t%s\t%s\n", ordnum, orddate, shdate);
     }
 
-
-
-
-
-
-
-
-
-    /*SQLBindCol(stmt, 1, SQL_C_SLONG, &ordnum, sizeof(SQLINTEGER), NULL);
-    SQLBindCol(stmt, 2, SQL_C_CHAR, orddate, sizeof(orddate), NULL);
-    SQLBindCol(stmt, 3, SQL_C_CHAR, shdate, sizeof(shdate), NULL);
-    
-    SQLDescribeCol(stmt, 1, buf, sizeof(buf), NULL, NULL, NULL, NULL, NULL);
-    printf("%s\n", buf);
-    while (SQL_SUCCEEDED(ret = SQLFetch(stmt))) {
-        printf("%d\n", ordnum);
-    }
-
-    SQLDescribeCol(stmt, 2, buf, sizeof(buf), NULL, NULL, NULL, NULL, NULL);
-    printf("%s\n", buf);
-    while (SQL_SUCCEEDED(ret = SQLFetch(stmt))) {
-        printf("%s\n", orddate);
-    }
-
-    SQLDescribeCol(stmt, 3, buf, sizeof(buf), NULL, NULL, NULL, NULL, NULL);
-    printf("%s\n", buf);
-    while (SQL_SUCCEEDED(ret = SQLFetch(stmt))) {
-        printf("%s\n", shdate);
-    }
-    */
     printf("\n");
     /* free up statement handle */
     SQLFreeHandle(SQL_HANDLE_STMT, stmt);
@@ -165,4 +135,4 @@ int rangeQuery(){
 
 
 
-int detailQuery();
+int detailOrdersQuery();

@@ -8,7 +8,7 @@
 #include "products.h"
 
 
-int stockQuery() {
+int stockProductsQuery() {
     SQLHENV env;
     SQLHDBC dbc;
     SQLHSTMT stmt;
@@ -67,7 +67,7 @@ int stockQuery() {
     return EXIT_SUCCESS;
 }
 
-int findQuery(){
+int findProductsQuery(){
     SQLHENV env;
     SQLHDBC dbc;
     SQLHSTMT stmt;

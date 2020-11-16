@@ -9,7 +9,7 @@ all : $(EXE)
 clean :
 	rm -f *.o core $(EXE)
 
-$(EXE) : % : %.o odbc.o menu_template.o products.o orders.o
+$(EXE) : % : %.o odbc.o menu_template.o products.o orders.o customers.o
 
 
 
