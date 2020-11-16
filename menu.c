@@ -59,8 +59,9 @@ int ShowMainMenu() {
     char buf[16]; 
 
     do {
-        printf("This is a classic models auto store,\n");
-        printf("Here you can get information about all our products and store information\n\n");
+        printf("This is a classic models auto store,\n"
+               "Here you can get information about all\n"
+               "our products and store information.\n\n");
 
         printf(" (1) Products\n"
                " (2) Orders\n"

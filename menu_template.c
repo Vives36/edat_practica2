@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <sql.h>
 #include <sqlext.h>
+#include "odbc.h"
 #include "menu_template.h"
 #include "products.h"
-#include "odbc.h"
+#include "orders.h"
 
 
 void ShowProductsMenu(){
@@ -71,7 +72,9 @@ void ShowOrdersMenu(){
         nChoice = ShowOrdersSubMenu();
         switch (nChoice){
             case 1: {
-                printf("Aqui hace open");
+                if(openQuery() == EXIT_SUCCESS){
+                    ShowOrdersMenu();
+                }
             }
                 break;
             
@@ -99,10 +102,10 @@ int ShowOrdersSubMenu(){
     char buf[16];
 
     do {
-        printf(" (1) List of orders not shipped\n");
-        printf(" (2) Orders between two dates\n");
-        printf(" (3) List of products given an OrderNumber\n");
-        printf(" (4) Back\n\n");
+        printf(" (1) List of orders not shipped\n"
+               " (2) Orders between two dates\n"
+               " (3) List of products given an OrderNumber\n"
+               " (4) Back\n\n");
 
         printf("Enter a number that corresponds to your choice > ");
 
@@ -161,10 +164,10 @@ int ShowCustomersSubMenu(){
     char buf[16];
 
     do {
-        printf(" (1) List of customers given a part of its name\n");
-        printf(" (2) List of products order by a customer\n");
-        printf(" (3) Balance of a customer given its CustomerNumber\n");
-        printf(" (4) Back\n\n");
+        printf(" (1) List of customers given a part of its name\n"
+               " (2) List of products order by a customer\n"
+               " (3) Balance of a customer given its CustomerNumber\n"
+               " (4) Back\n\n");
 
         printf("Enter a number that corresponds to your choice > ");
 

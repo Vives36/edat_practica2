@@ -1,4 +1,3 @@
-#include "products.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -6,6 +5,7 @@
 #include <sqlext.h>
 #include "odbc.h"
 #include "menu_template.h"
+#include "products.h"
 
 
 int stockQuery() {
@@ -111,7 +111,7 @@ int findQuery(){
     for (i = 1; i <= columns; i++) {
         SQLCHAR buf[512];
         SQLDescribeCol(stmt, i, buf, sizeof(buf), NULL, NULL, NULL, NULL, NULL);
-        printf("%s\t", buf);
+        printf("%s\n", buf);
     }
     
     printf("\n");
