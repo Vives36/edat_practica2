@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <sql.h>
 #include <sqlext.h>
+#include <string.h>
 #include "odbc.h"
 #include "menu_template.h"
 #include "products.h"
@@ -29,8 +30,8 @@ void ShowProductsMenu(){
                 break;
             
             case 3: {
-                
             }
+                
                 break;
         }
     }while(nChoice !=3);
@@ -40,6 +41,7 @@ void ShowProductsMenu(){
 
 int ShowProductsSubMenu(){
     int nSelected = 0;
+    int i;
     char buf[16];
 
     do {
@@ -49,12 +51,20 @@ int ShowProductsSubMenu(){
 
         printf("Enter a number that corresponds to your choice > ");
 
-        if (!fgets(buf, 16, stdin))
+        if (!fgets(buf, 16, stdin)){
             /* reading input failed, give up: */
             nSelected =0;
-        else
+        }
+        else{
             /* have some input, convert it to integer: */
             nSelected = atoi(buf);
+        }
+
+        for(i=0;i<=15;i++){
+            if(buf[i]=='\n'){
+                buf[i]='\0';
+            }
+        }
         printf("\n");
         if ((nSelected < 1) || (nSelected > 3)) {
             printf("You have entered an invalid choice. Please try again\n\n\n");

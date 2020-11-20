@@ -27,7 +27,7 @@ int stockProductsQuery() {
     SQLAllocHandle(SQL_HANDLE_STMT, dbc, &stmt);
 
     /* Preguntamos al cliente por el codigo */
-    printf("Introduce el codigo de producto: \n");
+    printf("Enter productcode > ");
     fflush(stdout);
 
     /* Guardamos codigo en 'x' */
@@ -89,7 +89,7 @@ int findProductsQuery(){
     SQLAllocHandle(SQL_HANDLE_STMT, dbc, &stmt);
 
     /* Preguntamos al cliente por el codigo */
-    printf("Introduce parte del nombre del producto: \n");
+    printf("Enter productname > ");
     fflush(stdout);
 
     /* Guardamos codigo en 'x' */

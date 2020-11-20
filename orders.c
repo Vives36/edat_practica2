@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <string.h>
 #include <sql.h>
 #include <sqlext.h>
 #include "odbc.h"
@@ -61,7 +62,8 @@ int rangeOrdersQuery(){
     SQLRETURN ret; /* ODBC API return status */
     SQLSMALLINT columns; /* number of columns in result-set */
     SQLUSMALLINT i;
-    char x[512], y[512]; /* FECHAS */
+    char  *x, *y, *aux; /* FECHAS */
+    char res[512];
     SQLINTEGER ordnum;
     SQLCHAR orddate[512], shdate[512];
     char query[512]; /* Char en el que guardar consulta */
@@ -78,21 +80,27 @@ int rangeOrdersQuery(){
 
     /* Preguntamos al cliente por las fechas */
 
-    printf("Introduce la primera fecha (YYYY-MM-DD): \n");
+    printf("Enter dates (YYYY-MM-DD - YYYY-MM-DD) > ");
     /* Guardamos codigo en 'x' */
-    fgets(x, sizeof(x), stdin);
-    x[strlen(x)-1]='\0';
-    fflush(stdout);
+    if(!(fgets(res, sizeof(res), stdin))){
+        return EXIT_FAILURE;
+    }
+    res[strlen(res)-1]='\0';
 
-    printf("Introduce la segunda fecha (YYYY-MM-DD): \n");
-    /* Guardamos codigo en 'y' */
-    fgets(y, sizeof(y), stdin);
-    y[strlen(y)-1]='\0';
-    fflush(stdout);
+    if(!(x= strtok(res, " "))){
+        return EXIT_FAILURE;
+    }
+    if(!(aux= strtok (NULL, " "))){
+        return EXIT_FAILURE;
+    }
+    if(!(y= strtok (NULL, "\0"))){
+        return EXIT_FAILURE;
+    }
+
 
     /* Guardamos en 'query' la consulta */
     sprintf(query, "select o.ordernumber, o.orderdate, o.shippeddate from orders o  where"
-                   "(o.orderdate>=\'%s\') and (o.orderdate <= \'%s\') order by o.ordernumber; ", x, y);
+                   "(o.orderdate>= ?) and (o.orderdate <= \'%s\') order by o.ordernumber; ", x, y);
 	printf("%s\n", query);   /* IMPORTANTISIMO IMPRIMIR CONSULTA */
     printf("\n");
 
